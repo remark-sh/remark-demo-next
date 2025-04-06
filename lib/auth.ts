@@ -40,6 +40,54 @@ export const auth = betterAuth({
           });
         },
       },
+      update: {
+        async after(user) {
+          console.log("🔄 Updating contact in Theta...");
+
+          // Fix edge case where full name contains only one word
+          const [firstName, lastName] = user.name.split(" ");
+
+          const res = await theta.contacts.update({
+            id: user.id,
+            email: user.email,
+            firstName: firstName || undefined,
+            lastName: lastName || undefined,
+          });
+
+          console.log("✅ Contact updated successfully!");
+          console.log("📋 Contact details:");
+
+          console.table({
+            id: res?.data?.id,
+            email: res?.data?.email,
+            firstName: res?.data?.firstName,
+            lastName: res?.data?.lastName,
+          });
+        },
+      },
+    },
+  },
+  user: {
+    deleteUser: {
+      enabled: true,
+      beforeDelete: async (user) => {
+        console.log("🔄 Deleting contact in Theta...");
+
+        const res = await theta.contacts.delete(user.id);
+
+        // If it fails, throw APIError to interrupt the deletion process.
+        if (!res?.data?.id) {
+          throw new Error("Can't delete in Theta, can't delete your account.");
+        }
+
+        console.log("✅ Contact deleted successfully!");
+
+        console.log("📋 Contact details:");
+
+        console.table({
+          id: res?.data?.id,
+        });
+      },
     },
   },
   socialProviders: {
