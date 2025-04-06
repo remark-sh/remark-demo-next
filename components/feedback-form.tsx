@@ -7,7 +7,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import Link from "next/link";
 
 const formSchema = z.object({
   message: z.string().min(2).max(2000),
@@ -23,9 +22,9 @@ export function FeedbackForm() {
   };
 
   return form.formState.isSubmitted ? (
-    <div className="space-y-1">
-      <p className="text-sm font-medium">That's it!</p>
-      <p className="text-sm opacity-80">
+    <div className="text-muted-foreground space-y-1">
+      <p className="text-sm">That's it!</p>
+      <p className="text-sm">
         You can now go to your dashboard to see your feedback.
       </p>
     </div>
