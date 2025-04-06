@@ -10,12 +10,27 @@ export const auth = betterAuth({
     provider: "pg",
     schema,
   }),
+  databaseHooks: {
+    user: {
+      create: {
+        // after(user) {
+        // // Every new user is added to the theta contact list
+        // await theta.contacts.create({
+        //   id: session?.user.id,
+        //   email: session?.user.email,
+        //   firstName: session?.user.name.split(" ")[0],
+        //   lastName: session?.user.name.split(" ")[1],
+        // });
+        // },
+      },
+    },
+  },
   socialProviders: {
     github: {
       clientId: process.env.GITHUB_CLIENT_ID!,
       clientSecret: process.env.GITHUB_CLIENT_SECRET!,
     },
   },
-  user: {},
+
   plugins: [nextCookies()],
 });
