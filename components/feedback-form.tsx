@@ -7,18 +7,32 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import { theta } from "@/config/theta";
+import { authClient } from "@/lib/auth-client";
+import { usePathname } from "next/navigation";
 
 const formSchema = z.object({
   message: z.string().min(2).max(2000),
 });
 
 export function FeedbackForm() {
+  const { data: session } = authClient.useSession();
+  const pathname = usePathname();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
   });
 
-  const onSubmit = (data: z.infer<typeof formSchema>) => {
-    console.log(data);
+  const onSubmit = async (data: z.infer<typeof formSchema>) => {
+    if (!session?.user?.email) {
+      return;
+    }
+
+    await theta.feedbacks.create({
+      from: session?.user?.email,
+      where: pathname, // optional but helpful for context, can be a url or a string
+      message: data.message,
+    });
   };
 
   return form.formState.isSubmitted ? (

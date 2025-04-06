@@ -1,12 +1,10 @@
-import { Theta } from "@theta-sdk/node";
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { nextCookies } from "better-auth/next-js";
 
 import { db } from "@/lib/db/drizzle";
 import { schema } from "@/lib/db/schema";
-
-const theta = new Theta(process.env.THETA_API_KEY!);
+import { theta } from "@/config/theta";
 
 export const auth = betterAuth({
   database: drizzleAdapter(db, {
