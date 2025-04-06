@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(14.1% 0.005 285.823);
+  --primary: oklch(14.1% 0.005 285.823);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(97% 0 0);
+  --secondary-foreground: oklch(20.5% 0 0);
+  --border: oklch(92% 0.004 286.32);
+  --accent: oklch(96.7% 0.001 286.375);
+  --accent-foreground: oklch(21% 0.006 285.885);
+  --input: oklch(87.1% 0.006 286.286);
+  --muted: oklch(96.7% 0.001 286.375);
+  --muted-foreground: oklch(55.2% 0.016 285.938);
+  --ring: oklch(70.5% 0.015 286.067);
+  --destructive: oklch(57.7% 0.245 27.325);
+  --destructive-foreground: oklch(98.5% 0 0);
+  --success: oklch(59.6% 0.145 163.225);
+  --success-foreground: oklch(98.5% 0 0);
+  --popover: oklch(1 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+}
+
+.dark {
+  --background: oklch(14.1% 0.005 285.823);
+  --foreground: oklch(98.5% 0 0);
+  --primary: oklch(98.5% 0 0);
+  --primary-foreground: oklch(14.1% 0.005 285.823);
+  --secondary: oklch(26.9% 0 0);
+  --secondary-foreground: oklch(98.5% 0 0);
+  --input: oklch(27.4% 0.006 286.033);
+  --accent: oklch(21% 0.006 285.885);
+  --accent-foreground: oklch(92% 0.004 286.32);
+  --border: oklch(27.4% 0.006 286.033);
+  --muted: oklch(27.4% 0.006 286.033);
+  --muted-foreground: oklch(70.5% 0.015 286.067);
+  --ring: oklch(44.2% 0.017 285.786);
+  --destructive: oklch(64% 0.21 25.33);
+  --destructive-foreground: oklch(98.5% 0 0);
+  --success: oklch(69.6% 0.17 162.48);
+  --success-foreground: oklch(98.5% 0 0);
+  --popover: oklch(14.1% 0.005 285.823);
+  --card: oklch(14.1% 0.005 285.823);
+  --card-foreground: oklch(98.5% 0 0);
+}
+
+@theme inline {
+  --font-sans: var(--font-geist);
+  --font-mono: var(--font-geist-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-input: var(--input);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-ring: var(--ring);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-popover: var(--popover);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
