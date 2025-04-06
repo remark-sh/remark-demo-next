@@ -1,6 +1,6 @@
 # Theta and Next.js example
 
-This example demonstrates how to gather feedback from your users using Theta's SDK, Next.js, shadcn-ui (based on Radix UI), better-auth, drizzle-orm, and Neon Postgres.
+This example demonstrates how to gather feedback from your users using Theta's SDK, [Next.js](https://nextjs.org), [shadcn-ui](https://ui.shadcn.com) (based on [Radix UI](https://www.radix-ui.com)), [better-auth](https://github.com/nextauthjs/next-auth), [drizzle-orm](https://orm.drizzle.team), and [Neon Postgres](https://neon.tech).
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
