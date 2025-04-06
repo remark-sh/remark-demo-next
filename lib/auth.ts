@@ -17,15 +17,20 @@ export const auth = betterAuth({
     user: {
       create: {
         async after(user) {
-          // Every new user is added to the theta contact list
+          console.log("🔄 Creating new contact in Theta...");
+
+          // Fix edge case where full name contains only one word
+          const [firstName, lastName] = user.name.split(" ");
+
           const res = await theta.contacts.create({
             id: user.id,
             email: user.email,
-            firstName: user.name.split(" ")[0],
-            lastName: user.name.split(" ")[1],
+            firstName: firstName || undefined,
+            lastName: lastName || undefined,
           });
 
-          console.log("created contact:");
+          console.log("✅ Contact created successfully!");
+          console.log("📋 Contact details:");
 
           console.table({
             id: res?.data?.id,
