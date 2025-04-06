@@ -10,5 +10,12 @@ export const auth = betterAuth({
     provider: "pg",
     schema,
   }),
+  socialProviders: {
+    github: {
+      clientId: process.env.GITHUB_CLIENT_ID!,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET!,
+    },
+  },
+  user: {},
   plugins: [nextCookies()],
 });
