@@ -1,4 +1,4 @@
-# Theta and Next.js example
+# Remark API and Next.js example
 
 This example demonstrates how to gather feedback from your users using Theta's SDK, [Next.js](https://nextjs.org), [shadcn-ui](https://ui.shadcn.com) (based on [Radix UI](https://www.radix-ui.com)), [better-auth](https://www.better-auth.com/docs/integrations/next), [drizzle-orm](https://orm.drizzle.team), and [Neon Postgres](https://neon.tech).
 
