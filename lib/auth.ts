@@ -1,12 +1,12 @@
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { nextCookies } from "better-auth/next-js";
-import { Theta } from "@theta-sdk/node";
+import { Remark } from "@remark-sh/sdk";
 
 import { db } from "@/lib/db/drizzle";
 import { schema } from "@/lib/db/schema";
 
-export const theta = new Theta(process.env.THETA_API_KEY!);
+export const remark = new Remark(process.env.REMARK_API_KEY!);
 
 export const auth = betterAuth({
   database: drizzleAdapter(db, {
@@ -17,11 +17,9 @@ export const auth = betterAuth({
     user: {
       create: {
         async after(user) {
-          // 1. Split the name into two parts.
           const [firstName, lastName] = user.name.split(" ");
 
-          // 2. Create a new contact in Theta.
-          const { error } = await theta.contacts.create({
+          const { error } = await remark.contacts.create({
             email: user.email,
             lastName,
             firstName,
@@ -34,11 +32,9 @@ export const auth = betterAuth({
       },
       update: {
         async after(user) {
-          // 1. Split the name into two parts.
           const [firstName, lastName] = user.name.split(" ");
 
-          // 2. Update the contact in Theta.
-          const { error } = await theta.contacts.update({
+          const { error } = await remark.contacts.update({
             email: user.email,
             lastName,
             firstName,
@@ -55,7 +51,7 @@ export const auth = betterAuth({
     deleteUser: {
       enabled: true,
       beforeDelete: async (user) => {
-        const { error } = await theta.contacts.delete({
+        const { error } = await remark.contacts.delete({
           email: user.email,
         });
 
