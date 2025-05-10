@@ -16,15 +16,17 @@ export const auth = betterAuth({
   databaseHooks: {
     user: {
       create: {
-        async after({ name, email}) {
+        async after({ name, email }) {
           const { error } = await remark.contacts.create({
             name,
-            email
+            email,
           });
 
           if (error) {
             throw new Error(error.message);
           }
+
+          console.log("Contact created", { name, email });
         },
       },
       update: {
@@ -37,6 +39,8 @@ export const auth = betterAuth({
           if (error) {
             throw new Error(error.message);
           }
+
+          console.log("Contact updated", { name, email });
         },
       },
     },
@@ -52,6 +56,8 @@ export const auth = betterAuth({
         if (error) {
           throw new Error(error.message);
         }
+
+        console.log("Contact deleted", { email: user.email });
       },
     },
   },
