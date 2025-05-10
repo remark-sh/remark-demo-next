@@ -16,7 +16,7 @@ export async function send(text: string) {
     throw new Error("Unauthorized");
   }
 
- const { error } =  await remark.feedbacks.create({
+  const { error } = await remark.feedbacks.create({
     from: session.user.email,
     text,
   });
