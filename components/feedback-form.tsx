@@ -1,12 +1,12 @@
 "use client";
 
-import { z } from "zod";
-import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
-import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { send } from "@/app/actions";
 import { Button } from "@/components/ui/button";
+import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { Textarea } from "@/components/ui/textarea";
 
 const formSchema = z.object({
@@ -24,7 +24,7 @@ export function FeedbackForm() {
 
   return form.formState.isSubmitted ? (
     <div className="text-muted-foreground space-y-1">
-      <p className="text-sm">That's it!</p>
+      <p className="text-sm">That&apos;s it!</p>
       <p className="text-sm">
         You can now go to your dashboard to see your feedback.
       </p>
