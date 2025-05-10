@@ -16,13 +16,10 @@ export const auth = betterAuth({
   databaseHooks: {
     user: {
       create: {
-        async after(user) {
-          const [firstName, lastName] = user.name.split(" ");
-
+        async after({ name, email}) {
           const { error } = await remark.contacts.create({
-            email: user.email,
-            lastName,
-            firstName,
+            name,
+            email
           });
 
           if (error) {
@@ -31,13 +28,10 @@ export const auth = betterAuth({
         },
       },
       update: {
-        async after(user) {
-          const [firstName, lastName] = user.name.split(" ");
-
+        async after({ name, email }) {
           const { error } = await remark.contacts.update({
-            email: user.email,
-            lastName,
-            firstName,
+            email,
+            name,
           });
 
           if (error) {
