@@ -23,6 +23,7 @@ export const auth = betterAuth({
           });
 
           if (error) {
+            console.error("Error creating contact", error);
             throw new Error(error.message);
           }
 

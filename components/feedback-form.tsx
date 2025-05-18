@@ -6,20 +6,32 @@ import { z } from "zod";
 
 import { send } from "@/app/actions";
 import { Button } from "@/components/ui/button";
-import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
 const formSchema = z.object({
   text: z.string().min(2).max(2000),
+  path: z.string().min(2).max(2000).optional(),
 });
 
 export function FeedbackForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
+    defaultValues: {
+      text: "",
+      path: undefined,
+    },
   });
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
-    await send(data.text);
+    await send(data.text, data.path);
   };
 
   return form.formState.isSubmitted ? (
@@ -43,6 +55,28 @@ export function FeedbackForm() {
                   placeholder="Submit a feedback..."
                   {...field}
                 />
+              </FormControl>
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="path"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Pathname (For AI to be more specific)</FormLabel>
+              <FormControl>
+                <div className="flex">
+                  <span className="border-input bg-background text-muted-foreground -z-10 inline-flex items-center rounded-l-md border px-3 text-sm">
+                    /
+                  </span>
+                  <Input
+                    type="text"
+                    className="-ms-px rounded-none shadow-none"
+                    placeholder="settings"
+                    {...field}
+                  />
+                </div>
               </FormControl>
             </FormItem>
           )}

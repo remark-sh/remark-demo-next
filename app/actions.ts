@@ -7,7 +7,7 @@ import { auth } from "@/lib/auth";
 
 const remark = new Remark(process.env.REMARK_API_KEY!);
 
-export async function send(text: string) {
+export async function send(text: string, path?: string) {
   const session = await auth.api.getSession({
     headers: await headers(),
   });
@@ -19,6 +19,9 @@ export async function send(text: string) {
   const { error } = await remark.feedbacks.create({
     from: session.user.email,
     text,
+    metadata: {
+      path: path ? `/${path}` : undefined,
+    },
   });
 
   if (error) {
