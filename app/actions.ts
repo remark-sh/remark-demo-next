@@ -2,6 +2,7 @@
 
 import { Remark } from "@remark-sh/sdk";
 import { headers } from "next/headers";
+import { userAgent } from "next/server";
 
 import { auth } from "@/lib/auth";
 
@@ -16,11 +17,18 @@ export async function send(text: string, path?: string) {
     throw new Error("Unauthorized");
   }
 
+  const { os, device, browser } = userAgent({
+    headers: await headers(),
+  });
+
   const { error } = await remark.feedbacks.create({
     from: session.user.email,
     text,
     metadata: {
+      os: os.name,
       path: path ? `/${path}` : undefined,
+      device: device.type,
+      browser: browser.name,
     },
   });
 
