@@ -26,7 +26,7 @@ export function FeedbackForm() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       text: "",
-      path: undefined,
+      path: "",
     },
   });
 
@@ -67,12 +67,12 @@ export function FeedbackForm() {
               <FormLabel>Pathname (For AI to be more specific)</FormLabel>
               <FormControl>
                 <div className="flex">
-                  <span className="border-input bg-background text-muted-foreground -z-10 inline-flex items-center rounded-l-md border px-3 text-sm">
+                  <span className="border-input bg-background text-muted-foreground z-1 inline-flex items-center rounded-l-md border px-3 text-sm">
                     /
                   </span>
                   <Input
                     type="text"
-                    className="-ms-px rounded-none shadow-none"
+                    className="z-2 -ms-px rounded-none shadow-none"
                     placeholder="settings"
                     {...field}
                   />

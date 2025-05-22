@@ -1,6 +1,6 @@
 "use server";
 
-import { Remark } from "@remark-sh/sdk";
+import { Remark } from "@remark-sh/sdk-dev";
 import { headers } from "next/headers";
 import { userAgent } from "next/server";
 
@@ -19,6 +19,15 @@ export async function send(text: string, path?: string) {
 
   const { os, device, browser } = userAgent({
     headers: await headers(),
+  });
+
+  console.log({
+    "about to send to the api of remark": {
+      os: os.name,
+      path: path ? `/${path}` : undefined,
+      device: device.type ?? "desktop",
+      browser: browser.name,
+    },
   });
 
   const { error } = await remark.feedbacks.create({
