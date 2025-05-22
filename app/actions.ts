@@ -25,10 +25,10 @@ export async function send(text: string, path?: string) {
     from: session.user.email,
     text,
     metadata: {
-      os: os.name,
+      os: os.name, // e.g. "Windows"
       path: path ? `/${path}` : undefined,
-      device: device.type,
-      browser: browser.name,
+      device: device.type ?? "desktop", // e.g. "mobile"
+      browser: browser.name, // e.g. "Chrome"
     },
   });
 
