@@ -1,4 +1,4 @@
-import { Remark } from "@remark-sh/sdk-dev";
+import { Remark } from "@remark-sh/sdk";
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { nextCookies } from "better-auth/next-js";

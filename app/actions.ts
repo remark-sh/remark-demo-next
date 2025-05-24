@@ -1,6 +1,6 @@
 "use server";
 
-import { Remark } from "@remark-sh/sdk-dev";
+import { Remark } from "@remark-sh/sdk";
 import { headers } from "next/headers";
 import { userAgent } from "next/server";
 
