@@ -21,15 +21,6 @@ export async function send(text: string, path?: string) {
     headers: await headers(),
   });
 
-  console.log({
-    "about to send to the api of remark": {
-      os: os.name,
-      path: path ? `/${path}` : undefined,
-      device: device.type ?? "desktop",
-      browser: browser.name,
-    },
-  });
-
   const { error } = await remark.feedbacks.create({
     from: session.user.email,
     text,
@@ -43,6 +34,5 @@ export async function send(text: string, path?: string) {
 
   if (error) {
     console.error(error);
-    throw new Error(error.message);
   }
 }

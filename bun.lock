@@ -9,7 +9,7 @@
         "@radix-ui/react-label": "^2.1.7",
         "@radix-ui/react-slot": "^1.2.3",
         "@remark-sh/sdk": "^0.4.2",
-        "@remark-sh/sdk-dev": "^0.4.2",
+        "@remark-sh/sdk-dev": "^0.4.5",
         "better-auth": "^1.2.8",
         "class-variance-authority": "^0.7.1",
         "clsx": "^2.1.1",
@@ -253,7 +253,7 @@
 
     "@remark-sh/sdk": ["@remark-sh/sdk@0.4.2", "", {}, "sha512-AiTs0xV8zjldW9UaLLS4CYn97BRRwDIoF8n4NWvFEO689zMS3nsE9bZ2mNbYhpqjrNRmg6mLBI/vrJyDwJkQBw=="],
 
-    "@remark-sh/sdk-dev": ["@remark-sh/sdk-dev@0.4.3", "", {}, "sha512-pmiXWUyE3SUe5tvcKpl1YGuhNmFDP6bUS2vJGvaQFL35LzOzXZjv9VlG3WvaSnXwad6w+0iYpVxFGzLav3XOAw=="],
+    "@remark-sh/sdk-dev": ["@remark-sh/sdk-dev@0.4.6", "", {}, "sha512-2T2gjViD58M280ebVlRd5i5OEyl82+HyBBevNwDXOKOAJEenxGG3SlchnBwqwh0hUXrnmATY30aZ0BUIG/OkMw=="],
 
     "@rtsao/scc": ["@rtsao/scc@1.1.0", "", {}, "sha512-zt6OdqaDoOnJ1ZYsCYGt9YmWzDXl4vQdKTyJev62gFhRGKdx7mcT54V9KIjg+d2wi9EXsPvAPKe7i7WjfVWB8g=="],
 
